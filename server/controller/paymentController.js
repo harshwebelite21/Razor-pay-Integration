@@ -4,7 +4,15 @@ import { Payment } from "../models/orders.js";
 
 export const checkout = async (req, res) => {
   const options = {
-    amount: Number(req.body.amount * 100),
+    amount: Number(req.body.orderTotal),
+    notes: {
+      notes: String(req.body.notes),
+      userName: String(req.body.userName),
+      userEmail: String(req.body.userEmail),
+      country: String(req.body.country),
+      orderTotal: Number(req.body.orderTotal),
+      orderId: String(req.body.orderId),
+    },
     currency: "INR",
   };
 
