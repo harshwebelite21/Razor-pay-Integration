@@ -4,7 +4,7 @@ import { Payment } from "../models/orders.js";
 
 export const checkout = async (req, res) => {
   const options = {
-    amount: Number(req.body.orderTotal),
+    amount: Number(req.body.orderTotal * 100),
     notes: {
       notes: String(req.body.notes),
       userName: String(req.body.userName),
@@ -43,7 +43,7 @@ export const paymentVerification = async (req, res) => {
       razorpay_payment_id,
     });
     res.redirect(
-      `http://localhost:3000/payment-success?payment_id=${razorpay_payment_id}`
+      `http://localhost:5173/payment-success?payment_id=${razorpay_order_id}`
     );
   } else {
     res.status(400).json("Payment Failed! ");
